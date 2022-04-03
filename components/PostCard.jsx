@@ -1,5 +1,5 @@
 import React from 'react'
-import {HiCalendar} from 'react-icons/hi'
+import {HiOutlineCalendar} from 'react-icons/hi'
 import moment from 'moment'
 import Link from 'next/link'
 
@@ -21,7 +21,7 @@ const PostCard = ({ post }) => {
             {post.title}
           </Link>
         </h1>
-        <div className="bloc lg:flex text-center intems-center justify-center mb-8 w-full">
+        <div className="block lg:flex text-center items-center justify-center mb-8 w-full">
           <div className="flex items-centers justify-center mb-4 lg:mb-0 w-full lg:w-auto mr-8">
             <img
               alt={post.author.name}
@@ -30,10 +30,10 @@ const PostCard = ({ post }) => {
               className="align-middle rounded-full"
               src={post.author.photto.url}
               />
-              <p className='inline align-middle text-gray-700 ml-2 text-lg'>{post.author.name}</p>
+              <p className='inline align-middle text-gray-700 ml-2 font-medium text-lg'>{post.author.name}</p>
           </div>
           <div className="flex items-center font-medium text-gray-700">
-            <HiCalendar className='h-6 w-6 inline mr-2 text-gray-700'/>
+            <HiOutlineCalendar className='h-6 w-6 inline mr-2 text-gray-700'/>
             <span>{moment(post.createdAt).format('MMMM DD, YYYY')}</span>
           </div>
         </div>
