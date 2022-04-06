@@ -66,7 +66,7 @@ const PostDetail = ({ post }) => {
               {post.author.name}
             </p>
           </div>
-          <div className="flex items-center font-medium text-gray-700">
+          <div className="flex items-center justify-center font-medium text-gray-700">
             <HiOutlineCalendar className="mr-2 inline h-6 w-6 text-gray-700" />
             <span>{moment(post.createdAt).format('MMMM DD, YYYY')}</span>
           </div>
