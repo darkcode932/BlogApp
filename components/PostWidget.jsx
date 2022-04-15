@@ -1,3 +1,5 @@
+{/**Composant Widget Pour affichage des Post recents et silmilaires */}
+
 import React , {useState, useEffect} from 'react';
 import moment from 'moment';
 import Link from 'next/link';
@@ -11,7 +13,7 @@ const PostWidget = ({categories, slug}) => {
 
   useEffect(() => {
     if(slug){
-      getSimilarPosts(categories, slug)
+      getSimilarPosts(categories, slug) //
         .then((result) => setRelatedPosts(result))
     } else {
       getRecentPosts()

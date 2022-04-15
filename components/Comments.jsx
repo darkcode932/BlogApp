@@ -1,3 +1,6 @@
+{/**Composant d'affichages des commentaires */}
+
+
 import React, {useState, useEffect} from 'react';
 import moment from 'moment';
 import parse from 'html-react-parser';

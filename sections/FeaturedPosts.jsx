@@ -1,4 +1,4 @@
-
+{/**Section pour le pre rendu des differents Post sous forme de carousel */}
 import React, { useState, useEffect } from 'react';
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
@@ -44,7 +44,7 @@ const FeaturedPosts = () => {
   );
 
   const customRightArrow = (
-    <div className="absolute arrow-btn right-0 text-center py-3 cursor-pointer translate-x-5 rounded-full">
+    <div className="absolute arrow-btn right-0 text-center py-3 cursor-pointer rounded-full">
       <HiChevronDoubleRight className='h-6 w-6 text-white'/>
     </div>
   );

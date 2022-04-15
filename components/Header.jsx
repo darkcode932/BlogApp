@@ -1,3 +1,5 @@
+//Composant d'en tete de page
+
 import { React, useState, useEffect } from 'react'
 import Link from 'next/link'
 
@@ -7,7 +9,7 @@ const Header = () => {
   const [categories, setCategories] = useState([])
 
   useEffect(() => {
-    getCategories().then((newCataegories) => setCategories(newCataegories))
+    getCategories().then((newCategories) => setCategories(newCategories)) //getCategories() est une fonction qui retourne une promesse permettant de recuperer les nouvelles categories s'il y en a
   }, [])
 
   return (

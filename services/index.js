@@ -2,6 +2,7 @@ import { request, gql } from 'graphql-request'
 
 const graphqlAPI = process.env.NEXT_PUBLIC_GRAPHCMS_ENDPOINT
 
+/* Fonction permettant de recuperer les posts de du Backend*/
 export const getPosts = async() => {
     const query = gql `
     query MyQuery {
@@ -38,6 +39,8 @@ export const getPosts = async() => {
     return result.postsConnection.edges
 }
 
+/**Fonction qui recupère les details des posts et les affiche à l'utilisateur */
+
 export const getPostDetails = async(slug) => {
     const query = gql `
     query GetPostDetails($slug: String!) {
@@ -72,6 +75,8 @@ export const getPostDetails = async(slug) => {
 
     return result.post;
 }
+
+/**Fonction qui classe le type de post en fonction de sa categorie */
 
 export const getCategoryPost = async(slug) => {
     const query = gql `
@@ -110,23 +115,28 @@ export const getCategoryPost = async(slug) => {
     return result.postsConnection.edges;
 };
 
+/**fonction qui affiche les posts du plus recent en fonction du paramètre ed la date à laquelle
+ * elle a été cree  */
+
 export const getRecentPosts = async() => {
     const query = gql `
-    query GetPostDetails {
-      posts(orderBy: createdAt_DESC, last: 3) {
-        title
-        featuredImage {
-          url
-        }
-        createdAt
-        slug
+  query GetPostDetails {
+    posts(orderBy: createdAt_DESC, last: 3) {
+      title
+      featuredImage {
+        url
       }
+      createdAt
+      slug
     }
-  `
-    const result = await request(graphqlAPI, query)
+  }
+`
+    const result = await request(graphqlAPI, query);
 
-    return result.posts
+    return result.posts;
 }
+
+/**Fonction pour les posts Adjacents */
 
 export const getAdjacentPosts = async(createdAt, slug) => {
     const query = gql `
@@ -163,6 +173,7 @@ export const getAdjacentPosts = async(createdAt, slug) => {
     return { next: result.next[0], previous: result.previous[0] };
 };
 
+/**Fonction qui regroupe les posts en fonction de leur similarité */
 export const getSimilarPosts = async(categories, slug) => {
     const query = gql `
     query GetPostDetails($slug: String!, $categories: [String!]) {
@@ -188,6 +199,8 @@ export const getSimilarPosts = async(categories, slug) => {
     return result.posts;
 }
 
+/**Fonction de recuperation de sdifferentes categories de Post creee en backend */
+
 export const getCategories = async(slug) => {
     const query = gql `
     query GetCategories {
@@ -203,6 +216,7 @@ export const getCategories = async(slug) => {
     return result.categories;
 }
 
+/**Fonction de soumission d'un comment */
 export const submitComment = async(obj) => {
     const result = await fetch('/api/comments', {
         method: 'POST',
@@ -215,6 +229,7 @@ export const submitComment = async(obj) => {
     return result.json();
 }
 
+/**Fonction de recuperation et d'affichage des commentaires apres avoir été soumis par un user */
 export const getComments = async(slug) => {
     const query = gql `
   query GetComments($slug: String!) {
@@ -230,6 +245,10 @@ export const getComments = async(slug) => {
 
     return result.comments;
 }
+
+/**Fonction qui recuperer et affiche les diifferents features d'un post (photo, titre....)
+ * pour affiche les differents posts dans la page d'accueil en carousel */
+
 
 export const getFeaturedPosts = async() => {
     const query = gql `

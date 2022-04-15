@@ -1,3 +1,5 @@
+{/**Composant Pour formulaire à remplir pour submissions d'un commentaire */}
+
 import React, {useState, useEffect, useRef} from 'react'
 
 import {submitComment} from '../services';
@@ -7,10 +9,12 @@ const CommentsForm = ({slug}) => {
     const [error, setError] = useState(null);
     const [localStorage, setLocalStorage] = useState(null);
     const [showSuccesMessage, setShowSuccesMessage] = useState(false);
-    const commentEl = useRef();
+    const commentEl = useRef(); //pour le focus du champ commentaire et sa reference
     const nameEl = useRef();
     const emailEl = useRef();
     const storeDataEl  = useRef();
+
+    //
 
     useEffect(() => {
        nameEl.current.value = window.localStorage.getItem('name');
@@ -18,28 +22,29 @@ const CommentsForm = ({slug}) => {
     })
 
     const handleCommentSubmission = () =>{
-        setError(false);
+        setError(false); // reset error
 
-        const {value: comment} = commentEl.current;
-        const {value: name} = nameEl.current;
-        const {value: email} = emailEl.current;
-        const {value: storeData} = storeDataEl.current;
+        const {value: comment} = commentEl.current; //récupération du contenu du champ commentaire
+        const {value: name} = nameEl.current; //récupération du contenu du champ name
+        const {value: email} = emailEl.current; //récupération du contenu du champ email
+        const {value: storeData} = storeDataEl.current; //récupération du contenu du champ storeData
 
         if(!comment || !name || !email){
             setError(true);
             return;
         }
 
-        const commentObj = { comment, name, email, slug };
+        const commentObj = { comment, name, email, slug }; //Objet de commentaire et ses attributs
 
-        if(storeData){
-            window.localStorage.setItem('name', name);
+        if(storeData){ //Si le checkbox est coché
+            window.localStorage.setItem('name', name);//Stockage en local de l'attribute name de l'utilisateur
             window.localStorage.setItem('email', email);
         } else {
-            window.localStorage.removeItem('name');
+            window.localStorage.removeItem('name');//remove de l'email commentaire en local
             window.localStorage.removeItem('email');
         }
 
+        //Soumission de l'objet commentaire
         submitComment(commentObj)
             .then((res) => {
                 setShowSuccesMessage(true);

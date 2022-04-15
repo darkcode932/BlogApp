@@ -1,3 +1,5 @@
+{/**Composant d'affichage d'un Post sous forme de Card */}
+
 import React from 'react'
 import {HiOutlineCalendar} from 'react-icons/hi'
 import moment from 'moment'

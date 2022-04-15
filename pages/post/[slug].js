@@ -35,6 +35,8 @@ const PostDetails = ({post}) => {
 
 export default PostDetails 
 
+//recuparation des données de facon asynchrone et dynamique
+
 export async function getStaticProps({params}){
   const data = await getPostDetails(params.slug)
   return {
@@ -42,6 +44,8 @@ export async function getStaticProps({params}){
   }
   
 }
+
+//fonction qui specifie la route dynamique des posts pounr un pre rendu basé sur les differentes données
 
 export async function getStaticPaths(){
   const posts = await getPosts()

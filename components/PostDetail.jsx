@@ -1,8 +1,13 @@
+{/**Composant pour Detail d'un Post */}
+
 import React from 'react'
 import { HiOutlineCalendar } from 'react-icons/hi'
 import moment from 'moment'
 
 const PostDetail = ({ post }) => {
+
+  {/**Initialisation des paramètres qui paermettront de recuperer la mise en forme 
+originelle des detail d'un post comme ecris dans le backend (italic, bold, souligné) */}
 
   const getContentFragment = (index, text, obj, type) => {
     let modifiedText = text;
@@ -20,6 +25,8 @@ const PostDetail = ({ post }) => {
         modifiedText = (<u key={index}>{text}</u>);
       }
     }
+
+    {/**Fonction d'affichage du Post detail en fonction de chaque type de details du detail du Post */}
 
     switch (type) {
       case 'heading-three':
@@ -72,6 +79,8 @@ const PostDetail = ({ post }) => {
           </div>
         </div>
         <h1 className="mb-8 text-3xl font-semibold">{post.title}</h1>
+        {/**Recuperation de des items d'un post parent pour affichage du post en detail sur le rendu 
+         * de l'enfant dans le composant PostDetail */}
         {post.content.raw.children.map((typeObj, index) => {
             const children = typeObj.children.map((item, itemIndex) => getContentFragment(itemIndex, item.text, index))
 

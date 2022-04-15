@@ -1,3 +1,5 @@
+{/**Composant de Chargement de Donées */}
+
 import React from 'react';
 
 const Loader = () => (

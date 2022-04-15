@@ -1,3 +1,5 @@
+{/**Composant pour affichage des CATEGORIES DE POST */}
+
 import React, {useState, useEffect} from 'react'
 import Link from 'next/link';
 
