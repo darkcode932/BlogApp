@@ -10,7 +10,7 @@ const PostWidget = ({categories, slug}) => {
 
   const [relatedPosts, setRelatedPosts] = useState([]);
 
-
+//hook pour recuperer les posts similaires
   useEffect(() => {
     if(slug){
       getSimilarPosts(categories, slug) //

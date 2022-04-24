@@ -16,7 +16,7 @@ function Home({ posts }) {
           {posts.map((post) => (
             <PostCard post={post.node} key={post.title} />
           ))}{' '}
-        </div>
+        </div>{' '}
         <div className="col-span-1 lg:col-span-4">
           <div className="relative top-8 lg:sticky">
             <PostWidget />
@@ -29,6 +29,8 @@ function Home({ posts }) {
 }
 
 export default Home
+
+/** Fonction de de recuparation des props en statique provenant des Posts */
 
 export async function getStaticProps() {
   const posts = (await getPosts()) || []

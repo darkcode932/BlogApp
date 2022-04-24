@@ -9,6 +9,7 @@ const Categories = () => {
 
   const [categories, setCategories] = useState([]);
 
+  //hook pour recuperer les categories
   useEffect(() => {
     getCategories()
       .then((newCataegories) => setCategories(newCataegories))

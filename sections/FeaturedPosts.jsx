@@ -7,6 +7,8 @@ import {HiChevronDoubleLeft, HiChevronDoubleRight} from 'react-icons/hi'
 import { FeaturedPostCard } from '../components';
 import { getFeaturedPosts } from '../services';
 
+
+// responsive breakpoints
 const responsive = {
   superLargeDesktop: {
     breakpoint: { max: 4000, min: 1024 },
