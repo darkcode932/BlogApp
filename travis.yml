@@ -1,0 +1,19 @@
+deploy:
+  provider: heroku
+  api_key:
+    secure: 
+  app:
+    master: main
+
+language: node_js
+node_js:
+  - 16.14.2
+cache:
+  directories:
+  - node_modules
+script:
+env:
+  global:
+  - 
+after_success: 
+  -
