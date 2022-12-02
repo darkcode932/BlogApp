@@ -2,6 +2,7 @@ import Head from 'next/head'
 import { Categories, PostCard, PostWidget } from '../components'
 import { getPosts } from '../services'
 import { FeaturedPosts } from '../sections'
+import Link from 'next/link'
 
 function Home({ posts }) {
   return (
@@ -21,6 +22,7 @@ function Home({ posts }) {
           <div className="relative top-8 lg:sticky">
             <PostWidget />
             <Categories />
+            <Link href="/page1">About</Link>
           </div>{' '}
         </div>{' '}
       </div>{' '}

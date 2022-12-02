@@ -1,4 +1,4 @@
 {
-    "include": ["**/*.ts"],
+    "include": ["**/*.ts", "component/Loader.cy.js"],
     "extends": "../tsconfig.json"
   }
